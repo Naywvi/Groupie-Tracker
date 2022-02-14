@@ -1,1 +1,1 @@
-Ici nous avons un jeu "Hangman" adapté au web avec une API crée aussi en Go. Nous avons utilisée des templates en go.
+Here we have a "Hangman" game adapted to the web with an API also created in Go. We used go templates.
