@@ -14,8 +14,7 @@ import (
 	"time"
 )
 
-//api spotify ??? afficher images albums ou + artistes ???
-
+//Js dans un fichier
 type Templ struct { //Struct sent to api
 	Artiste []Artist
 	Random  int
@@ -51,12 +50,11 @@ var artist Artist //creation instance struct artist
 
 func tracker(w http.ResponseWriter, r *http.Request) { //function that starts when tracker or artist page is loaded
 	var (
-		art       Templ
-		url       string //url for making requests
-		selectart bool
-		param     = r.URL.Query()["artist"]
-		Randparam = r.URL.Query()["RandomArtist"]
-		//param url filter
+		art         Templ
+		url         string //url for making requests
+		selectart   bool
+		param       = r.URL.Query()["artist"]
+		Randparam   = r.URL.Query()["RandomArtist"]
 		apparitionP = r.URL.Query()["apparition"]
 		albumP      = r.URL.Query()["album"]
 		membersP    = r.URL.Query()["members"]
@@ -95,7 +93,9 @@ func tracker(w http.ResponseWriter, r *http.Request) { //function that starts wh
 			url += random
 			selectart = false
 		}
-		s, _, _ := json.Unmarshal([]byte(request(url)), &artist), json.Unmarshal([]byte(request(artist.Locations)), &artist.Location), json.Unmarshal([]byte(request(artist.Location.Dates)), &artist.Location.DatesLoc)
+		s, _, _ := json.Unmarshal([]byte(request(url)), &artist),
+			json.Unmarshal([]byte(request(artist.Locations)), &artist.Location),
+			json.Unmarshal([]byte(request(artist.Location.Dates)), &artist.Location.DatesLoc)
 		str := ""
 		for _, v := range artist.Members { //prints members without []
 			str += v + " "
